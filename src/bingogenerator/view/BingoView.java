@@ -64,7 +64,7 @@ public class BingoView extends JFrame {
             }
         }
 
-        painel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
+        painel.setBorder(BorderFactory.createLineBorder(Color.GREEN, 2));
         return painel;
     };
 }
