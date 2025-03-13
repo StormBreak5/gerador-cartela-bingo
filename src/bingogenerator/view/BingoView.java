@@ -12,7 +12,7 @@ public class BingoView extends JFrame {
 
     public BingoView() {
         setTitle("Gerador de Folha de Bingo");
-        setSize(600, 400);
+        setSize(800, 600);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null);
         iniciarComponentes();
@@ -30,7 +30,7 @@ public class BingoView extends JFrame {
         });
 
         cardPanel = new JPanel();
-        cardPanel.setLayout(new GridLayout(0, 1));
+        cardPanel.setLayout(new GridLayout(0, 2, 10, 10));
         JScrollPane scrollPane = new JScrollPane(cardPanel);
 
         add(botaoGerar, BorderLayout.NORTH);
@@ -42,29 +42,11 @@ public class BingoView extends JFrame {
 
         for(int i = 0; i < 5; i++) {
             BingoCard cartao = new BingoCard();
-            JPanel cartaoUI = criarCardPanel(cartao);
+            BingoCardPanel cartaoUI = new BingoCardPanel(cartao);
             cardPanel.add(cartaoUI);
         }
 
         cardPanel.revalidate();
         cardPanel.repaint();
     }
-
-    private JPanel criarCardPanel(BingoCard card) {
-        JPanel painel = new JPanel();
-        painel.setLayout(new GridLayout(5, 5));
-        int[][] numeros = card.getNumeros();
-
-        for (int i = 0; i < 5; i++) {
-            for (int j = 0; j < 5; j++) {
-                String texto = numeros[i][j] == 0 ? "FREE" : String.valueOf(numeros[i][j]);
-                JLabel label = new JLabel(texto, SwingConstants.CENTER);
-                label.setBorder(BorderFactory.createLineBorder(Color.BLACK));
-                painel.add(label);
-            }
-        }
-
-        painel.setBorder(BorderFactory.createLineBorder(Color.GRAY, 2));
-        return painel;
-    };
 }
